@@ -1,0 +1,190 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #fdfbf9;
+  --cream-deep: #f7f0eb;
+  --blush: #fdeef3;
+  --lavender: #ede8f7;
+  --lavender-deep: #ddd2f0;
+  --petal: #f5c8dc;
+  --rose-soft: #e8b8c8;
+  --ink: #524854;
+  --ink-soft: #8a7d90;
+  --champagne: #f7ede0;
+  --dust-rose: #c9a0a8;
+  --heart-clue: #b15a6f;
+  --heart-clue-deep: #8e4556;
+  --heart-clue-glow: rgba(177, 90, 111, 0.24);
+  --white-glow: rgba(255, 255, 255, 0.88);
+  --shadow-soft: 0 24px 64px -28px rgba(168, 130, 188, 0.28);
+  --shadow-card: 0 16px 48px -20px rgba(199, 164, 207, 0.24);
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-blush: var(--blush);
+  --color-lavender: var(--lavender);
+  --color-lavender-deep: var(--lavender-deep);
+  --color-petal: var(--petal);
+  --color-rose-soft: var(--rose-soft);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-champagne: var(--champagne);
+  --color-dust-rose: var(--dust-rose);
+  --color-heart-clue: var(--heart-clue);
+  --color-heart-clue-deep: var(--heart-clue-deep);
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #faf8fa;
+  background-image:
+    radial-gradient(
+      ellipse 140% 90% at 50% -20%,
+      rgba(237, 232, 247, 0.45),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 94% 30%,
+      rgba(253, 238, 244, 0.38),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 85% 65% at 6% 70%,
+      rgba(250, 220, 232, 0.22),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 120% 75% at 50% 108%,
+      rgba(253, 251, 248, 0.85),
+      transparent 58%
+    );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--petal) 35%, transparent);
+  color: var(--ink);
+}
+
+.text-heart-clue {
+  color: var(--heart-clue);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  text-shadow: 0 0 26px var(--heart-clue-glow);
+}
+
+.text-heart-clue-soft {
+  color: color-mix(in srgb, var(--heart-clue) 75%, var(--ink));
+  font-weight: 500;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(28px, -22px) scale(1.03);
+  }
+  66% {
+    transform: translate(-18px, 14px) scale(0.98);
+  }
+}
+
+@keyframes float-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-26px, 20px);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1) rotate(12deg);
+  }
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateY(110vh) translateX(var(--petal-drift, 12px))
+      rotate(320deg);
+    opacity: 0;
+  }
+}
+
+.petal-fall {
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.42) 0%,
+    rgba(255, 255, 255, 0.22) 100%
+  );
+  backdrop-filter: blur(18px) saturate(1.02);
+  -webkit-backdrop-filter: blur(18px) saturate(1.02);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-card);
+}
+
+.text-gradient-soft {
+  background: linear-gradient(
+    125deg,
+    #b899c4 0%,
+    #d898b8 45%,
+    #b8a8d8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mesh-gradient {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 20% 20%,
+      rgba(248, 187, 217, 0.32),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 80% 10%,
+      rgba(199, 183, 245, 0.28),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 60% 55% at 60% 90%,
+      rgba(252, 228, 236, 0.4),
+      transparent 58%
+    );
+}

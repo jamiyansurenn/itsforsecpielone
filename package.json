@@ -1,0 +1,12 @@
+{
+  "name": "cute-bay",
+  "private": true,
+  "description": "Delegating npm scripts to cute-bay-site/next app.",
+  "scripts": {
+    "dev": "npm --prefix cute-bay-site run dev",
+    "build": "npm --prefix cute-bay-site run build",
+    "start": "npm --prefix cute-bay-site run start",
+    "lint": "npm --prefix cute-bay-site run lint",
+    "install:site": "npm install --prefix cute-bay-site"
+  }
+}
