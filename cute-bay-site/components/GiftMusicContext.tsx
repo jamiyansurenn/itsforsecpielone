@@ -5,42 +5,67 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
+
+const LOVER_VIDEO_ID = "TLatHUqhTnU";
+
+function youtubeEmbedSrc() {
+  return `https://www.youtube-nocookie.com/embed/${LOVER_VIDEO_ID}?autoplay=1&mute=0&rel=0&modestbranding=1&playsinline=1`;
+}
 
 type GiftMusicCtx = {
   playing: boolean;
   toggle: () => void;
   play: () => void;
-  iframeKey: number;
 };
 
 const GiftMusicContext = createContext<GiftMusicCtx | null>(null);
 
 export function GiftMusicProvider({ children }: { children: ReactNode }) {
   const [playing, setPlaying] = useState(false);
-  const [iframeKey, setIframeKey] = useState(0);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const play = useCallback(() => {
-    setIframeKey((k) => k + 1);
-    setPlaying(true);
+    setPlaying((wasPlaying) => {
+      if (wasPlaying) return true;
+      const el = iframeRef.current;
+      if (el) el.src = youtubeEmbedSrc();
+      return true;
+    });
   }, []);
 
   const toggle = useCallback(() => {
     setPlaying((p) => {
-      if (!p) setIframeKey((k) => k + 1);
-      return !p;
+      const el = iframeRef.current;
+      if (!p) {
+        if (el) el.src = youtubeEmbedSrc();
+        return true;
+      }
+      if (el) el.src = "about:blank";
+      return false;
     });
   }, []);
 
   const value = useMemo(
-    () => ({ playing, toggle, play, iframeKey }),
-    [playing, toggle, play, iframeKey],
+    () => ({ playing, toggle, play }),
+    [playing, toggle, play],
   );
 
   return (
-    <GiftMusicContext.Provider value={value}>{children}</GiftMusicContext.Provider>
+    <GiftMusicContext.Provider value={value}>
+      <iframe
+        ref={iframeRef}
+        title="Taylor Swift — Lover (YouTube)"
+        src="about:blank"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="pointer-events-none fixed bottom-[5.5rem] right-6 z-40 h-[3px] w-[3px] max-h-[3px] max-w-[3px] overflow-hidden opacity-[0.02] [clip:rect(0,0,0,0)]"
+      />
+      {children}
+    </GiftMusicContext.Provider>
   );
 }
 

@@ -14,25 +14,34 @@ export function HeartCollectionHUD() {
     <>
       <CollectBurst burstKey={burstKey} origin="top-right" />
       <div className="pointer-events-none fixed right-4 top-4 z-[205] flex flex-col items-end gap-2 md:right-6 md:top-6">
-        <motion.div
-          className="glass-panel rounded-[1.35rem] px-3.5 py-3 shadow-[var(--shadow-soft)] backdrop-blur-lg"
-          animate={
-            count >= 4
-              ? {
-                  boxShadow: [
-                    "0 16px 48px -20px rgba(199,164,207,0.18)",
-                    "0 20px 52px -16px rgba(232,190,210,0.28)",
-                    "0 16px 48px -20px rgba(199,164,207,0.18)",
-                  ],
+        <AnimatePresence>
+          {count > 0 ? (
+            <motion.div
+              key="heart-hud"
+              initial={{ opacity: 0, x: 18, filter: "blur(6px)" }}
+              animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+              exit={{ opacity: 0, x: 14, filter: "blur(4px)" }}
+              transition={{ duration: 0.45, ease: [0.22, 0.61, 0.36, 1] }}
+            >
+              <motion.div
+                className="glass-panel rounded-[1.35rem] px-3.5 py-3 shadow-[var(--shadow-soft)] backdrop-blur-lg"
+                animate={
+                  count >= 4
+                    ? {
+                        boxShadow: [
+                          "0 16px 48px -20px rgba(199,164,207,0.18)",
+                          "0 20px 52px -16px rgba(232,190,210,0.28)",
+                          "0 16px 48px -20px rgba(199,164,207,0.18)",
+                        ],
+                      }
+                    : {}
                 }
-              : {}
-          }
-          transition={
-            count >= 4
-              ? { duration: 4, repeat: Infinity, ease: "easeInOut" }
-              : undefined
-          }
-        >
+                transition={
+                  count >= 4
+                    ? { duration: 4, repeat: Infinity, ease: "easeInOut" }
+                    : undefined
+                }
+              >
           <p className="text-heart-clue text-right font-sans text-[10px] uppercase tracking-[0.22em]">
             Зүрхний хэсгүүд
           </p>
@@ -91,7 +100,10 @@ export function HeartCollectionHUD() {
               />
             ) : null}
           </AnimatePresence>
-        </motion.div>
+              </motion.div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
 
         <AnimatePresence>
           {hint ? (

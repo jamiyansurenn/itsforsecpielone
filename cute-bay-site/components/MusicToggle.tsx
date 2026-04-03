@@ -4,28 +4,11 @@ import { motion } from "framer-motion";
 import { Music, Volume2 } from "lucide-react";
 import { useGiftMusic } from "@/components/GiftMusicContext";
 
-const LOVER_VIDEO_ID = "TLatHUqhTnU";
-
 export function MusicToggle() {
-  const { playing, iframeKey, toggle } = useGiftMusic();
-
-  const embedSrc = playing
-    ? `https://www.youtube-nocookie.com/embed/${LOVER_VIDEO_ID}?autoplay=1&rel=0&modestbranding=1&playsinline=1`
-    : undefined;
+  const { playing, toggle } = useGiftMusic();
 
   return (
     <>
-      {embedSrc ? (
-        <iframe
-          key={iframeKey}
-          title="Taylor Swift — Lover (YouTube)"
-          src={embedSrc}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          className="pointer-events-none fixed bottom-[5.5rem] right-6 z-40 h-px w-px opacity-0"
-        />
-      ) : null}
-
       <div className="fixed bottom-6 right-6 z-[200] flex flex-col items-end gap-2">
         {playing ? (
           <span className="glass-panel hidden max-w-[230px] rounded-2xl px-3.5 py-2.5 text-right shadow-sm sm:block">
