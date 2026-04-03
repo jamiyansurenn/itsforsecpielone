@@ -60,9 +60,9 @@ export function HeartCollectionHUD() {
                       ? {
                           scale: [1, 1.08, 1],
                           boxShadow: [
-                            "0 0 0 0 rgba(248,187,217,0)",
-                            "0 0 16px 2px rgba(248,187,217,0.55)",
-                            "0 0 0 0 rgba(248,187,217,0)",
+                            "0 0 0 0 rgba(220,60,75,0)",
+                            "0 0 16px 2px rgba(220,60,75,0.55)",
+                            "0 0 0 0 rgba(220,60,75,0)",
                           ],
                         }
                       : {}
@@ -96,7 +96,7 @@ export function HeartCollectionHUD() {
                 initial={{ opacity: 0, scale: 0.6 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
-                className="pointer-events-none absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-br from-petal/30 to-lavender/25 blur-sm"
+                className="pointer-events-none absolute -inset-1 -z-10 rounded-2xl bg-gradient-to-br from-red-200/35 to-rose-100/25 blur-sm"
               />
             ) : null}
           </AnimatePresence>

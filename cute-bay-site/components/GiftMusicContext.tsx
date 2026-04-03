@@ -10,10 +10,24 @@ import {
   type ReactNode,
 } from "react";
 
-const LOVER_VIDEO_ID = "TLatHUqhTnU";
+export const LOVER_VIDEO_ID = "TLatHUqhTnU";
+
+/** Шууд харагдах хуудас — утасны WebView дээр embed тогтворгүй үед илүү найдвартай */
+export const LOVER_YOUTUBE_WATCH = `https://www.youtube.com/watch?v=${LOVER_VIDEO_ID}`;
 
 function youtubeEmbedSrc() {
-  return `https://www.youtube-nocookie.com/embed/${LOVER_VIDEO_ID}?autoplay=1&mute=0&rel=0&modestbranding=1&playsinline=1`;
+  const base = `https://www.youtube.com/embed/${LOVER_VIDEO_ID}`;
+  const params = new URLSearchParams({
+    autoplay: "1",
+    mute: "0",
+    playsinline: "1",
+    rel: "0",
+    modestbranding: "1",
+  });
+  if (typeof window !== "undefined") {
+    params.set("origin", window.location.origin);
+  }
+  return `${base}?${params.toString()}`;
 }
 
 type GiftMusicCtx = {
@@ -60,9 +74,9 @@ export function GiftMusicProvider({ children }: { children: ReactNode }) {
         ref={iframeRef}
         title="Taylor Swift — Lover (YouTube)"
         src="about:blank"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowFullScreen
-        className="pointer-events-none fixed bottom-[5.5rem] right-6 z-40 h-[3px] w-[3px] max-h-[3px] max-w-[3px] overflow-hidden opacity-[0.02] [clip:rect(0,0,0,0)]"
+        className="pointer-events-none fixed bottom-[4.25rem] right-3 z-40 aspect-video w-[min(200px,46vw)] max-w-[200px] rounded-md border-0 opacity-[0.03] outline-none"
       />
       {children}
     </GiftMusicContext.Provider>

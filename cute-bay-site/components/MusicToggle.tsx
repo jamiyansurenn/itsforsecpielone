@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Music, Volume2 } from "lucide-react";
-import { useGiftMusic } from "@/components/GiftMusicContext";
+import { LOVER_YOUTUBE_WATCH, useGiftMusic } from "@/components/GiftMusicContext";
 
 export function MusicToggle() {
   const { playing, toggle } = useGiftMusic();
@@ -30,7 +30,7 @@ export function MusicToggle() {
           onClick={toggle}
           aria-pressed={playing}
           aria-label={playing ? "Дуу зогсоох" : "Хөгжим тоглуулах"}
-          className="relative flex h-[3.25rem] w-[3.25rem] items-center justify-center overflow-hidden rounded-full border border-white/42 bg-gradient-to-br from-white/48 via-white/30 to-blush/26 text-ink/90 shadow-[var(--shadow-soft)] backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-petal/35 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8fa]"
+          className="relative flex h-[3.25rem] w-[3.25rem] items-center justify-center overflow-hidden rounded-full border border-white/42 bg-gradient-to-br from-white/48 via-white/30 to-blush/26 text-ink/90 shadow-[var(--shadow-soft)] backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[#faf8fa]"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.96 }}
           transition={{ type: "spring", stiffness: 380, damping: 26 }}
@@ -56,6 +56,17 @@ export function MusicToggle() {
             )}
           </span>
         </motion.button>
+        <a
+          href={LOVER_YOUTUBE_WATCH}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="glass-panel max-w-[11rem] rounded-xl px-2.5 py-2 text-center font-sans text-[10px] leading-snug text-heart-clue shadow-sm backdrop-blur-md [text-wrap:balance] sm:max-w-[13rem] sm:text-[11px]"
+        >
+          Дуу гарахгүй бол{" "}
+          <span className="font-semibold underline decoration-heart-clue/40 underline-offset-2">
+            YouTube дээр нээх
+          </span>
+        </a>
       </div>
     </>
   );

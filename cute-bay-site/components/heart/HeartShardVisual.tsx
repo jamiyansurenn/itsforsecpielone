@@ -82,10 +82,10 @@ export function HeartShardVisual({
     >
       <defs>
         <linearGradient id={gid} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="rgba(255,252,253,0.96)" />
-          <stop offset="40%" stopColor="rgba(252,228,236,0.85)" />
-          <stop offset="75%" stopColor="rgba(236,201,214,0.72)" />
-          <stop offset="100%" stopColor="rgba(212,168,188,0.55)" />
+          <stop offset="0%" stopColor="rgba(255,235,238,0.98)" />
+          <stop offset="35%" stopColor="rgba(255,138,148,0.92)" />
+          <stop offset="70%" stopColor="rgba(220,50,70,0.88)" />
+          <stop offset="100%" stopColor="rgba(155,28,46,0.82)" />
         </linearGradient>
         <linearGradient id={shineId} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="transparent" />
@@ -97,11 +97,11 @@ export function HeartShardVisual({
       <motion.path
         d={path.d}
         fill={`url(#${gid})`}
-        stroke="rgba(255,255,255,0.55)"
+        stroke="rgba(255,240,242,0.75)"
         strokeWidth={0.95}
         style={{
           filter:
-            "drop-shadow(0 0 8px rgba(255,255,255,0.4)) drop-shadow(0 0 20px rgba(232,192,210,0.45)) drop-shadow(0 0 36px rgba(200,160,190,0.22))",
+            "drop-shadow(0 0 6px rgba(255,200,208,0.65)) drop-shadow(0 0 18px rgba(220,60,80,0.5)) drop-shadow(0 0 28px rgba(180,30,50,0.35))",
           opacity: path.opacity ?? 0.92,
         }}
       />

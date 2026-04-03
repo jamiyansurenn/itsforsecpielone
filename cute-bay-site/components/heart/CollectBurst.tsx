@@ -40,7 +40,7 @@ export function CollectBurst({
         {particles.map((p) => (
           <motion.span
             key={p.id}
-            className="absolute h-1.5 w-1.5 rounded-full bg-white shadow-[0_0_10px_rgba(248,187,217,0.95)]"
+            className="absolute h-1.5 w-1.5 rounded-full bg-rose-50 shadow-[0_0_12px_rgba(248,100,115,0.95)]"
             initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
             animate={{
               x: Math.cos(p.angle) * p.dist,

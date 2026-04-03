@@ -105,9 +105,9 @@ export function HeartCombineCeremony() {
                     x2="100%"
                     y2="100%"
                   >
-                    <stop offset="0%" stopColor="rgba(255,248,252,0.95)" />
-                    <stop offset="50%" stopColor="rgba(252,228,236,0.8)" />
-                    <stop offset="100%" stopColor="rgba(244,165,194,0.6)" />
+                    <stop offset="0%" stopColor="rgba(255,232,236,0.96)" />
+                    <stop offset="50%" stopColor="rgba(248,105,118,0.88)" />
+                    <stop offset="100%" stopColor="rgba(180,32,52,0.75)" />
                   </linearGradient>
                 </defs>
                 <path
@@ -117,7 +117,7 @@ export function HeartCombineCeremony() {
                   strokeWidth={0.9}
                   style={{
                     filter:
-                      "drop-shadow(0 0 14px rgba(248,187,217,0.65)) drop-shadow(0 0 28px rgba(232,208,240,0.4))",
+                      "drop-shadow(0 0 12px rgba(255,150,160,0.75)) drop-shadow(0 0 26px rgba(200,40,60,0.55))",
                   }}
                 />
               </svg>
@@ -147,9 +147,9 @@ export function HeartCombineCeremony() {
                   phase === "heart"
                     ? {
                         filter: [
-                          "drop-shadow(0 0 20px rgba(248,187,217,0.5))",
-                          "drop-shadow(0 0 36px rgba(244,165,194,0.75))",
-                          "drop-shadow(0 0 20px rgba(248,187,217,0.5))",
+                          "drop-shadow(0 0 18px rgba(255,120,130,0.55))",
+                          "drop-shadow(0 0 38px rgba(210,45,65,0.72))",
+                          "drop-shadow(0 0 18px rgba(255,120,130,0.55))",
                         ],
                       }
                     : {}
@@ -158,15 +158,15 @@ export function HeartCombineCeremony() {
               >
                 <defs>
                   <radialGradient id="cer-heart-glow" cx="50%" cy="45%" r="65%">
-                    <stop offset="0%" stopColor="rgba(255,252,254,0.95)" />
-                    <stop offset="45%" stopColor="rgba(252,228,236,0.85)" />
-                    <stop offset="100%" stopColor="rgba(232,192,220,0.55)" />
+                    <stop offset="0%" stopColor="rgba(255,240,242,0.96)" />
+                    <stop offset="45%" stopColor="rgba(255,125,138,0.9)" />
+                    <stop offset="100%" stopColor="rgba(168,28,46,0.72)" />
                   </radialGradient>
                 </defs>
                 <motion.path
                   d={FULL_HEART}
                   fill="url(#cer-heart-glow)"
-                  stroke="rgba(255,255,255,0.65)"
+                  stroke="rgba(255,228,232,0.78)"
                   strokeWidth={1.1}
                   initial={{ pathLength: 0 }}
                   animate={{ pathLength: 1 }}
@@ -174,7 +174,7 @@ export function HeartCombineCeremony() {
                 />
               </motion.svg>
               {phase === "heart" ? (
-                <div className="absolute inset-0 -z-10 scale-150 rounded-full bg-petal/25 blur-3xl" />
+                <div className="absolute inset-0 -z-10 scale-150 rounded-full bg-red-400/20 blur-3xl" />
               ) : null}
             </motion.div>
           ) : null}
