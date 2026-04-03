@@ -1,2 +1,5 @@
 # Root (хэрэв энд npm install хийвэл)
 node_modules/
+
+# Vercel static output (build дээр үүснэ)
+public/

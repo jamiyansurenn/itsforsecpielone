@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "npm install --prefix cute-bay-site",
     "dev": "npm --prefix cute-bay-site run dev",
-    "build": "npm --prefix cute-bay-site run build",
+    "build": "npm --prefix cute-bay-site run build && node scripts/copy-out-to-public.cjs",
     "start": "npm --prefix cute-bay-site run start",
     "lint": "npm --prefix cute-bay-site run lint",
     "install:site": "npm install --prefix cute-bay-site"
